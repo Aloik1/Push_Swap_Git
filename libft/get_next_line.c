@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikondrat <ikondrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:08:35 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/09/30 18:40:54 by ikondrat         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:40:25 by ikondrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_free(char *str)
 {
@@ -65,7 +66,7 @@ char	*small_line(char **line)
 
 char	*big_line(int fd, char *buffer, char **line, ssize_t to_read)
 {
-	char	*aux;
+	char		*aux;
 
 	while (to_read > 0)
 	{
@@ -89,7 +90,7 @@ char	*get_next_line(int fd)
 {
 	char			*buffer;
 	ssize_t			to_read;
-	static char		*line[4096];
+	static char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -100,10 +101,10 @@ char	*get_next_line(int fd)
 	if (to_read == -1)
 	{
 		ft_free(buffer);
-		ft_free(line[fd]);
-		line[fd] = NULL;
+		ft_free(line);
+		line = NULL;
 		return (NULL);
 	}
 	buffer[to_read] = '\0';
-	return (big_line(fd, buffer, &line[fd], to_read));
+	return (big_line(fd, buffer, &line, to_read));
 }

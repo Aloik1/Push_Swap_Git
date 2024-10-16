@@ -14,9 +14,32 @@
 int	main(int argc, char **argv)
 {
 	int	i;
+	t_list	*firstnode;
+	t_list	*newnode;
+	char	*content;
 
-	i = 0;
-	argc = 11;
-	ft_printf("%d", create_lists(argv, i));
-	
+	(void)argc;
+	i = 1;
+	firstnode = NULL;
+	ft_printf("%d", argc);
+	if (argc > 1)
+	{
+		while (argv[i]) 
+		{
+			content = ft_strdup(argv[i]);
+			if (!content)
+				return (0);
+			newnode = ft_lstnew(content);
+			if (!newnode)
+			{
+				free(content);
+				return (0);
+			}
+			ft_lstadd_back(&firstnode, newnode);
+			ft_printf("%s", newnode->content);
+			i++;
+		}
+	}
+	ft_lstclear(&firstnode, free);
+	return (0);
 }
