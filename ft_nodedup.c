@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_nodedup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 15:43:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/16 20:59:19 by aloiki           ###   ########.fr       */
+/*   Created: 2024/10/16 18:22:44 by aloiki            #+#    #+#             */
+/*   Updated: 2024/10/16 18:27:14 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
+#include "push_swap.h"
 
-#include "libft/libft.h"
+t_list	*ft_nodedup(t_list *node)
+{
+	t_list	*dup;
 
-int	create_lists(char **argv, int i);
-void	sa(t_list **head, int argc);
-
-#endif
+	dup->content = ft_strdup(node->content)
+	dup->next = NULL;
+	return (dup);
+}
