@@ -1,23 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nodedup.c                                       :+:      :+:    :+:   */
+/*   ra_rb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 18:22:44 by aloiki            #+#    #+#             */
-/*   Updated: 2024/10/16 18:27:14 by aloiki           ###   ########.fr       */
+/*   Created: 2024/10/17 16:57:25 by aloiki            #+#    #+#             */
+/*   Updated: 2024/10/17 17:18:35 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-t_list	*ft_nodedup(t_list *node)
+void	rr(t_list **headA, t_list **headB)
 {
-	t_list	*dup;
+	ra(headA);
+	rb(headB);
+}
 
-	dup->content = ft_strdup(node->content)
-	dup->next = NULL;
-	return (dup);
+void	rb(t_list **headB)
+{
+	ra(headB);
+}
+
+void	ra(t_list **headA)
+{
+	t_list	*current;
+	t_list	*previous;
+
+	if (headA == NULL || *headA == NULL || (*headA)->next == NULL)
+		return ;
+	current = *headA;
+	previous = NULL;
+	while (current->next != NULL)
+	{
+		previous = current;
+		current = current->next;
+	}
+	current->next = *headA;
+	previous->next = NULL;
+	*headA = current;
 }

@@ -6,18 +6,18 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/16 21:02:30 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/17 17:15:14 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-static void	print_list(t_list **head)
+static void	print_list(t_list **headA)
 {
 	t_list	*current;
 
-	current = *head;
+	current = *headA;
 	while (current != NULL)
 	{
 		ft_printf("%s", current->content);
@@ -28,16 +28,18 @@ static void	print_list(t_list **head)
 int	main(int argc, char **argv)
 {
 	int	i;
-	t_list	*head;
+	t_list	*headA;
+	t_list	*headB;
 	t_list	*newnode;
 	char	*content;
 
 	(void)argc;
 	i = 1;
-	head = NULL;
+	headA = NULL;
+	headB = NULL;
 	if (argc > 1)
 	{
-		while (argv[i]) 
+		while (argv[i])
 		{
 			content = ft_strdup(argv[i]);
 			if (!content)
@@ -46,15 +48,23 @@ int	main(int argc, char **argv)
 			if (!newnode)
 			{
 				free(content);
+				ft_lstclear(&headA, free);
 				return (0);
 			}
-			ft_lstadd_back(&head, newnode);
+			ft_lstadd_back(&headA, newnode);
 			//ft_printf("%s", newnode->content);
 			i++;
 		}
 	}
-	sa(&head, argc);
-	print_list(&head);
-	ft_lstclear(&head, free);
+//	sa(&headA, argc);
+	headB = ft_lstsizedup(&headA);
+//	pa(&headA, &headB);
+//	sa(&headA, argc);
+//	pb(&headA, &headB);
+//	ra(&headA);
+	print_list(&headB);
+	print_list(&headA);
+	ft_lstclear(&headA, free);
+	ft_lstclear(&headB, free);
 	return (0);
 }
