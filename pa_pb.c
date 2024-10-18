@@ -39,6 +39,6 @@ void	pa(t_list **headA, t_list **headB)
 		previousB = currentB;
 		currentB = currentB->next;
 	}
-	ft_lstadd_back(headA, currentB);
 	previousB->next = NULL;
+	ft_lstadd_back(headA, currentB);
 }

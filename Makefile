@@ -7,7 +7,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF_DIR = libft/ft_printf
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
-SRC = push_swap.c	sa_sb_ss.c	pa_pb.c		ra_rb_rr.c	rra_rrb_rrr.c		ft_lstsizedup.c \
+SRC = push_swap.c		sa_sb_ss.c	pa_pb.c		ra_rb_rr.c \
+	  rra_rrb_rrr.c		algo.c		ft_lstsizedup.c \
 
 OBJ = $(SRC:.c=.o)
 

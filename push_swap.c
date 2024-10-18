@@ -62,8 +62,18 @@ int	main(int argc, char **argv)
 //	sa(&headA, argc);
 //	pb(&headA, &headB);
 //	ra(&headA);
+	ft_printf("B list is: ");
 	print_list(&headB);
+	write (1, "\n", 1);
+	ft_printf("A list is: ");
 	print_list(&headA);
+	write (1, "\n", 1);
+	algo(&headA, &headB);
+	ft_printf("Final result is, A: ");
+	print_list(&headA);
+	write (1, "\n", 1);
+	ft_printf("Final result is, B: ");
+	print_list(&headB);
 	ft_lstclear(&headA, free);
 	ft_lstclear(&headB, free);
 	return (0);

@@ -25,9 +25,9 @@ t_list	*ft_lstsizedup(t_list **headA)
 	headB = NULL;
 	while (current != NULL)
 	{
-		content = ft_strdup("A"); // change to NULL
-		if (!content) // only for test
-			return NULL; //only for test
+		content = ft_strdup(""); // change to NULL
+//		if (!content) // only for test
+//			return NULL; //only for test
 		newnode = ft_lstnew(content);
 		if (!newnode)
 		{

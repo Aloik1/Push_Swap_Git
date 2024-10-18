@@ -29,5 +29,6 @@ void	rrb(t_list **headB);
 void	rrr(t_list **headA, t_list **headB);
 
 t_list	*ft_lstsizedup(t_list **headA);
+void	algo(t_list **headA, t_list **headB);
 
 #endif
