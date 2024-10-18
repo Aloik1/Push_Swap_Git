@@ -30,6 +30,10 @@ void	pa(t_list **headA, t_list **headB)
 	previousB = NULL;
 	if (currentB->next == NULL)
 	{
+		if (*headA == NULL)
+		{
+			ft_lstadd_front(headA, currentB);
+		}
 		ft_lstadd_back(headA, currentB);
 		*headB = NULL;
 		return ;

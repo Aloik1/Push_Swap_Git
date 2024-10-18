@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	ft_printf("A list is: ");
 	print_list(&headA);
 	write (1, "\n", 1);
-	algo(&headA, &headB);
+	algo(&headA, &headB, i, argc);
 	ft_printf("Final result is, A: ");
 	print_list(&headA);
 	write (1, "\n", 1);

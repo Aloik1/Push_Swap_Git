@@ -80,12 +80,11 @@
 #include "libft.h"
 #include "push_swap.h"
 
-void	algo(t_list **headA, t_list **headB)
+void	algo(t_list **headA, t_list **headB, int size, int argc)
 {
 	t_list	*current;
 	int		i;
 	int		num;
-	int		size;
 
 	size = ft_lstsize(*headA);
 	while (size > 0)
@@ -95,9 +94,8 @@ void	algo(t_list **headA, t_list **headB)
 		current = current->next;
 		while (current != NULL)
 		{
-			if (num < ft_atoi(current->content))
+			if (num <= ft_atoi(current->content))
 				current = current->next;
-		//potential to optimize.A rule if multiple numbers are the same value
 			else
 			{
 				num = ft_atoi(current->content);
@@ -121,22 +119,31 @@ void	algo(t_list **headA, t_list **headB)
 			while (current->next != NULL)
 				ra(headA);
 			pb(headA, headB);
-			if (ft_lstsize(*headB) > 1)
-				rb(headB);
+			rb(headB);
 		}
 		if (i < ft_lstsize(*headA) / 2)
 		{
 			while (current->next != NULL)
 				rra(headA);
 			pb(headA, headB);
-			if (ft_lstsize(*headB) > 1)
-				rb(headB);
+			rb(headB);
 		}
-		/*while (ft_lstsize(*headB) != 0)
+		if (size == 2 && i == 1)
 		{
-			pa(headA, headB);
-		}*/
+			pb(headA, headB);
+			rb(headB);
+		}
+//		ft_printf("headA is: %s", (*headA)->content);
+//		write (1, "\n", 1);
+		ft_printf("headB is: %s", (*headB)->content);
+		write (1, "\n", 1);
 		size--;
 	}
-	pa(headA, headB);
+	i = 0;
+	while (i < argc)
+	{
+		pa(headA, headB);
+		i++;
+	}
+	//pa(headA, headB);
 }
