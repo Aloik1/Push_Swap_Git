@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:43:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/17 18:17:00 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 13:33:41 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 #include "libft/libft.h"
+#include <limits.h>
 
 int	create_lists(char **argv, int i);
 void	sa(t_list **headA, int argc);
@@ -29,6 +30,6 @@ void	rrb(t_list **headB);
 void	rrr(t_list **headA, t_list **headB);
 
 t_list	*ft_lstsizedup(t_list **headA);
-void	algo(t_list **headA, t_list **headB, int size, int argc);
+void	algo(t_list **headA, t_list **headB, int size);
 
 #endif

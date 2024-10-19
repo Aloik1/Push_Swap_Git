@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/17 17:15:14 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 12:56:37 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	ft_printf("A list is: ");
 	print_list(&headA);
 	write (1, "\n", 1);
-	algo(&headA, &headB, i, argc);
+	algo(&headA, &headB, i/*, argc*/);
 	ft_printf("Final result is, A: ");
 	print_list(&headA);
 	write (1, "\n", 1);
