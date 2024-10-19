@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 15:50:54 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 16:07:18 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	main(int argc, char **argv)
 			i++;
 		}
 	}
-	headB = ft_lstsizedup(&headA);
+//	headB = ft_lstsizedup(&headA);
+	headB = NULL; 
 	algo(&headA, &headB, i);
 	print_list(&headA);
 	ft_lstclear(&headA, free);

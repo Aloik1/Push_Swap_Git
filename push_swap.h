@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:43:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 13:33:41 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 16:08:15 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	rra(t_list **headA);
 void	rrb(t_list **headB);
 void	rrr(t_list **headA, t_list **headB);
 
-t_list	*ft_lstsizedup(t_list **headA);
 void	algo(t_list **headA, t_list **headB, int size);
 
 #endif

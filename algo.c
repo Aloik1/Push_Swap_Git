@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:35:45 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 15:59:31 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 16:08:49 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	algo(t_list **headA, t_list **headB, int size)
 			}
 			current = current->next;
 		}
-		ft_printf("A list size is: %d", ft_lstsize(*headA));
-		write (1, "\n", 1);
+		// ft_printf("A list size is: %d", ft_lstsize(*headA));
+		// write (1, "\n", 1);
 		if (ft_lstsize(*headA) == 1)
 		{
 			pb(headA, headB);
@@ -94,6 +94,8 @@ void	algo(t_list **headA, t_list **headB, int size)
 	ft_printf("rb");
 	write (1, "\n", 1);
 	size = ft_lstsize(*headB);
+	// ft_printf("size of B is: %d", ft_lstsize(*headB));
+	// write (1, "\n", 1);
 	while (size > 0)
 	{
 		pa(headA, headB);
