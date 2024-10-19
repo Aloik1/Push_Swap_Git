@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:35:45 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 16:08:49 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 20:56:53 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	algo(t_list **headA, t_list **headB, int size)
 			}
 			if (i <= (ft_lstsize(*headA) / 2))
 			{
+
 				while (min_node->next != NULL)
 				{
 					ra(headA);
