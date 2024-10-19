@@ -6,24 +6,24 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 12:56:37 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 14:51:01 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-static void	print_list(t_list **headA)
-{
-	t_list	*current;
+// static void	print_list(t_list **headA)
+// {
+// 	t_list	*current;
 
-	current = *headA;
-	while (current != NULL)
-	{
-		ft_printf("%s", current->content);
-		current = current->next;
-	}
-}
+// 	current = *headA;
+// 	while (current != NULL)
+// 	{
+// 		ft_printf("%s", current->content);
+// 		current = current->next;
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
@@ -56,24 +56,8 @@ int	main(int argc, char **argv)
 			i++;
 		}
 	}
-//	sa(&headA, argc);
 	headB = ft_lstsizedup(&headA);
-//	pa(&headA, &headB);
-//	sa(&headA, argc);
-//	pb(&headA, &headB);
-//	ra(&headA);
-	ft_printf("B list is: ");
-	print_list(&headB);
-	write (1, "\n", 1);
-	ft_printf("A list is: ");
-	print_list(&headA);
-	write (1, "\n", 1);
-	algo(&headA, &headB, i/*, argc*/);
-	ft_printf("Final result is, A: ");
-	print_list(&headA);
-	write (1, "\n", 1);
-	ft_printf("Final result is, B: ");
-	print_list(&headB);
+	algo(&headA, &headB, i);
 	ft_lstclear(&headA, free);
 	ft_lstclear(&headB, free);
 	return (0);
