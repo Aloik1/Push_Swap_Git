@@ -6,24 +6,24 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 14:51:01 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 15:50:54 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-// static void	print_list(t_list **headA)
-// {
-// 	t_list	*current;
+static void	print_list(t_list **headA)
+{
+	t_list	*current;
 
-// 	current = *headA;
-// 	while (current != NULL)
-// 	{
-// 		ft_printf("%s", current->content);
-// 		current = current->next;
-// 	}
-// }
+	current = *headA;
+	while (current != NULL)
+	{
+		ft_printf("%s", current->content);
+		current = current->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -58,6 +58,7 @@ int	main(int argc, char **argv)
 	}
 	headB = ft_lstsizedup(&headA);
 	algo(&headA, &headB, i);
+	print_list(&headA);
 	ft_lstclear(&headA, free);
 	ft_lstclear(&headB, free);
 	return (0);

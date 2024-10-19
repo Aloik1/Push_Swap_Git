@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:35:45 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 14:49:48 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/19 15:59:31 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	algo(t_list **headA, t_list **headB, int size)
 			}
 			current = current->next;
 		}
+		ft_printf("A list size is: %d", ft_lstsize(*headA));
+		write (1, "\n", 1);
 		if (ft_lstsize(*headA) == 1)
 		{
 			pb(headA, headB);
@@ -47,12 +49,21 @@ void	algo(t_list **headA, t_list **headB, int size)
 		{
 			i = 0;
 			current = *headA;
+			if (*headA == min_node)
+			{
+				while (min_node->next != NULL)
+				{
+					rra(headA);
+					ft_printf("rra");
+					write (1, "\n", 1);
+				}
+			}
 			while (current != min_node)
 			{
 				current = current->next;
 				i++;
 			}
-			if (i <= ft_lstsize(*headA) / 2)
+			if (i <= (ft_lstsize(*headA) / 2))
 			{
 				while (min_node->next != NULL)
 				{
@@ -66,7 +77,7 @@ void	algo(t_list **headA, t_list **headB, int size)
 				while (min_node->next != NULL)
 				{
 					rra(headA);
-					ft_printf("ra");
+					ft_printf("rra");
 					write (1, "\n", 1);
 				}
 			}
