@@ -13,6 +13,93 @@
 #include "libft.h"
 #include "push_swap.h"
 
+// static void	print_list(t_list **headA)
+// {
+// 	t_list	*current;
+
+// 	current = *headA;
+// 	while (current != NULL)
+// 	{
+// 		ft_printf("%s", current->content);
+// 		current = current->next;
+// 	}
+// }
+
+void	ra_or_rra(t_list **headA, t_list *min_node)
+{
+	int		i;
+	int		first;
+	t_list	*current;
+
+	i = 0;
+	first = 0;
+	current = *headA;
+	while (current != min_node)
+	{
+		current = current->next;
+		i++;
+	}
+	if (i >= (ft_lstsize(*headA) / 2))
+	{
+
+		while (min_node->next != NULL)
+		{
+			ra(headA);
+			ft_printf("ra\n");
+		}
+	}
+	else
+	{
+		while (min_node->next != NULL)
+		{
+			rra(headA);
+			ft_printf("rra\n");
+		}
+	}
+}
+
+int	neighbour_checker(t_list **headA, t_list **headB, t_list *min_node, int min_num)
+{
+	t_list	*current;
+	t_list	*next_min_node;
+	int		next_min_num;
+	int		current_num;
+
+	next_min_num = INT_MAX;
+	current = *headA;
+	while (current != NULL)
+	{
+		current_num = ft_atoi(current->content);
+		if (current_num < next_min_num  && current_num != min_num)
+		{
+			next_min_num = current_num;
+			next_min_node = current;
+		}
+		current = current->next;
+	}
+	if (next_min_node->next == min_node)
+	{
+		ra_or_rra(headA, min_node);
+		pb(headA, headB);
+		pb(headA, headB);
+		ft_printf("pb\n");
+		ft_printf("pb\n");
+		return (1);
+	}
+	if (min_node->next == next_min_node)
+	{
+		ra_or_rra(headA, next_min_node);
+		sa(headA);
+		pb(headA, headB);
+		pb(headA, headB);
+		ft_printf("pb\n");
+		ft_printf("pb\n");
+		return (1);
+	}
+	else
+		return 0;
+}
+
 void	algo(t_list **headA, t_list **headB, int size)
 {
 	t_list		*current;
@@ -22,7 +109,7 @@ void	algo(t_list **headA, t_list **headB, int size)
 	int		current_num;
 
 	size = ft_lstsize(*headA);
-	while (size > 0)
+	while (size > 1)
 	{
 		current = *headA;
 		min_num = INT_MAX;
@@ -37,16 +124,10 @@ void	algo(t_list **headA, t_list **headB, int size)
 			}
 			current = current->next;
 		}
-		// ft_printf("A list size is: %d", ft_lstsize(*headA));
-		// write (1, "\n", 1);
-		if (ft_lstsize(*headA) == 1)
+		if (!(neighbour_checker(headA, headB, min_node, min_num)))
 		{
-			pb(headA, headB);
-			ft_printf("pb");
-			write (1, "\n", 1);
-		}	
-		else
-		{
+			// ft_printf("A list size is: %d", ft_lstsize(*headA));
+			// write (1, "\n", 1);	
 			i = 0;
 			current = *headA;
 			if (*headA == min_node)
@@ -54,49 +135,25 @@ void	algo(t_list **headA, t_list **headB, int size)
 				while (min_node->next != NULL)
 				{
 					rra(headA);
-					ft_printf("rra");
-					write (1, "\n", 1);
+					ft_printf("rra\n");
 				}
 			}
-			while (current != min_node)
-			{
-				current = current->next;
-				i++;
-			}
-			if (i <= (ft_lstsize(*headA) / 2))
-			{
-
-				while (min_node->next != NULL)
-				{
-					ra(headA);
-					ft_printf("ra");
-					write (1, "\n", 1);
-				}
-			}
-			else
-			{
-				while (min_node->next != NULL)
-				{
-					rra(headA);
-					ft_printf("rra");
-					write (1, "\n", 1);
-				}
-			}
+			ra_or_rra(headA, min_node);
 			pb(headA, headB);
-			ft_printf("pb");
-			write (1, "\n", 1);
-			rb(headB);
-			ft_printf("rb");
-			write (1, "\n", 1);
+			ft_printf("pb\n");
+			// rb(headB);
+			// ft_printf("rb");
+			// write (1, "\n", 1);
+			size--;
 		}
-		size--;
+		else
+			size = size - 2;
+		// ft_printf("B list in the end is: ");
+		// print_list(headB);
+		// write (1, "\n", 1);
+
 	}
-	rb(headB); // I don't fking get it but it works :))
-	ft_printf("rb");
-	write (1, "\n", 1);
 	size = ft_lstsize(*headB);
-	// ft_printf("size of B is: %d", ft_lstsize(*headB));
-	// write (1, "\n", 1);
 	while (size > 0)
 	{
 		pa(headA, headB);

@@ -13,26 +13,26 @@
 #include "push_swap.h"
 #include "libft.h"
 
-void	ss(t_list **headA, t_list **headB, int argc)
+void	ss(t_list **headA, t_list **headB)
 {
-	sa(headA, argc);
-	sb(headB, argc);
+	sa(headA);
+	sb(headB);
 }
 
-void	sb(t_list **headB, int argc)
+void	sb(t_list **headB)
 {
-	sa(headB, argc);
+	sa(headB);
 }
 
-void	sa(t_list **head, int argc)
+void	sa(t_list **headA)
 {
 	t_list	*current;
 	t_list	*last;
 	t_list	*penultimo;
 
-	if (argc < 3) // if we have less than 2 args, dont do anything
+	if (ft_lstsize(*headA) < 2) // if we have less than 2 nodes, dont do anything
 		return ;
-	current = *head; //aux node, to not modify the original head 
+	current = *headA; //aux node, to not modify the original head 
 	last = NULL; // initialize 
 	penultimo = NULL; // initialize
 	while (current != NULL) // we want to reach the last node in the list
@@ -43,16 +43,16 @@ void	sa(t_list **head, int argc)
 	}
 	if (penultimo == NULL) // if we only have 1 node in the list, dont do anything
 		return ;
-	if (penultimo == *head) // if penultimo is the first node, aka we only have 2 nodes
+	if (penultimo == *headA) // if penultimo is the first node, aka we only have 2 nodes
 	{
 		last->next = penultimo; // swap, last points to penultimo
         	penultimo->next = NULL; // penultimo becomes the last node
-        	*head = last; // and last becomes the head, since we only have 2 nodes and we swapped them
+        	*headA = last; // and last becomes the head, since we only have 2 nodes and we swapped them
         	return;
 	}
 	penultimo->next = last; // when we reach the end, same condition as in while
 	last->next = NULL;
-	current = *head; // reset current to the beginning
+	current = *headA; // reset current to the beginning
 	while (current->next != penultimo) // we want ot get the the node, before the penultimo
 		current = current->next;
 // Imagine we have this list: 1 2 3 4 5 6. With the while, we reach number 4

@@ -24,7 +24,6 @@ AR = ar rcs
 all: $(PRINTF) $(NAME)
 
 $(PRINTF):
-	echo "Building in directory: $(PRINTF_DIR)"
 	make -C $(PRINTF_DIR)
 
 $(NAME): $(OBJS)

@@ -13,17 +13,18 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static void	print_list(t_list **headA)
-{
-	t_list	*current;
+// static void	print_list(t_list **headA)
+// {
+// 	t_list	*current;
 
-	current = *headA;
-	while (current != NULL)
-	{
-		ft_printf("%s", current->content);
-		current = current->next;
-	}
-}
+// 	current = *headA;
+// 	while (current != NULL)
+// 	{
+// 		ft_printf("%s", current->content);
+// 		ft_printf(" ");
+// 		current = current->next;
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
@@ -34,12 +35,12 @@ int	main(int argc, char **argv)
 	char	*content;
 
 	(void)argc;
-	i = 1;
+	i = argc - 1;
 	headA = NULL;
 	headB = NULL;
 	if (argc > 1)
 	{
-		while (argv[i])
+		while (i >= 1)
 		{
 			content = ft_strdup(argv[i]);
 			if (!content)
@@ -51,16 +52,21 @@ int	main(int argc, char **argv)
 				ft_lstclear(&headA, free);
 				return (0);
 			}
-			ft_lstadd_back(&headA, newnode);
+			ft_lstadd_front(&headA, newnode);
 			//ft_printf("%s", newnode->content);
-			i++;
+			i--;
 		}
 	}
 	headB = NULL;
-	//new_algo(&headA, &headB, i - 1);
-	algo(&headA, &headB, i - 1);
-	print_list(&headA);
+	//new_algo(&headA, &headB, argc - 1);
+	algo(&headA, &headB, argc - 1);
+	// ft_printf("A list in the end is: ");
+	// print_list(&headA);
+	// write (1, "\n", 1);
+	// ft_printf("B list in the end is: ");
+	// print_list(&headB);
+	// write (1, "\n", 1);
 	ft_lstclear(&headA, free);
-	ft_lstclear(&headB, free);
+//	ft_lstclear(&headB, free);
 	return (0);
 }

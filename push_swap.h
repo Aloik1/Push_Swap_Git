@@ -17,9 +17,9 @@
 #include <limits.h>
 
 int	create_lists(char **argv, int i);
-void	sa(t_list **headA, int argc);
-void	sb(t_list **headB, int argc);
-void	ss(t_list **headA, t_list **headB, int argc);
+void	sa(t_list **headA);
+void	sb(t_list **headB);
+void	ss(t_list **headA, t_list **headB);
 void	pa(t_list **headA, t_list **headB);
 void	pb(t_list **headA, t_list **headB);
 void	ra(t_list **headA);
