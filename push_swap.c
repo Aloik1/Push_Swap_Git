@@ -6,25 +6,25 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/21 13:32:04 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/21 23:14:19 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-// static void	print_list(t_list **headA)
-// {
-// 	t_list	*current;
+static void	print_list(t_list **headA)
+{
+	t_list	*current;
 
-// 	current = *headA;
-// 	while (current != NULL)
-// 	{
-// 		ft_printf("%s", current->content);
-// 		ft_printf(" ");
-// 		current = current->next;
-// 	}
-// }
+	current = *headA;
+	while (current != NULL)
+	{
+		ft_printf("%s", current->content);
+		ft_printf(" ");
+		current = current->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -58,15 +58,29 @@ int	main(int argc, char **argv)
 		}
 	}
 	headB = NULL;
-	new_algo(&headA, &headB, argc - 1);
-	// algo(&headA, &headB, argc - 1);
-	// ft_printf("A list in the end is: ");
-	// print_list(&headA);
-	// write (1, "\n", 1);
-	// ft_printf("B list in the end is: ");
-	// print_list(&headB);
-	// write (1, "\n", 1);
+	i = 0;
+	while (i != (argc - 1) / 2)
+	{
+		pb(&headA, &headB);
+		i++;
+	}
+	new_algo(&headA, &headB, ft_lstsize(headA));
+	
+	// while (headB != NULL)
+	// {
+	// 	pa(&headA, &headB);
+	// 	i--;
+	// }
+	// ft_printf("Starting second algo\n");
+	// new_algo(&headB, &headA, ft_lstsize(headB));
+	//algo(&headA, &headB, (argc - 1) / 2);
+	ft_printf("A list in the end is: ");
+	print_list(&headA);
+	write (1, "\n", 1);
+	ft_printf("B list in the end is: ");
+	print_list(&headB);
+	write (1, "\n", 1);
 	ft_lstclear(&headA, free);
-//	ft_lstclear(&headB, free);
+	ft_lstclear(&headB, free);
 	return (0);
 }

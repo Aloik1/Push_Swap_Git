@@ -6,19 +6,14 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:58:04 by aloiki            #+#    #+#             */
-/*   Updated: 2024/10/17 17:17:44 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/21 21:01:37 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-void	pb(t_list **headA, t_list **headB)
-{
-	pa(headB, headA);
-}
-
-void	pa(t_list **headA, t_list **headB)
+static void	pa_pb(t_list **headA, t_list **headB)
 {
 	t_list	*currentB;
 	t_list	*previousB;
@@ -45,4 +40,16 @@ void	pa(t_list **headA, t_list **headB)
 	}
 	previousB->next = NULL;
 	ft_lstadd_back(headA, currentB);
+}
+
+void	pb(t_list **headA, t_list **headB)
+{
+	pa_pb(headB, headA);
+	ft_printf("pb\n");
+}
+
+void	pa(t_list **headA, t_list **headB)
+{
+	pa_pb(headA, headB);
+	ft_printf("pa\n");
 }

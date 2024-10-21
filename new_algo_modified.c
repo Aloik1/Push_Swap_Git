@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_algo.c                                         :+:      :+:    :+:   */
+/*   new_algo_modified.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:35:45 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/21 23:13:56 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/21 23:12:43 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,33 @@
 // 	}
 // 	ft_printf("\n");
 // }
+
+static t_list	*last_checker(t_list **headA, char *exceptions)
+{
+	t_list	*current;
+	t_list	*min_node;
+	int	min_num;
+	int	current_num;
+
+	current = *headA;
+	min_num = INT_MAX;
+	min_node = NULL;
+	while (current !=NULL)
+	{
+		current_num = ft_atoi(current->content);
+		if (current_num < min_num)
+		{
+			if (!(ft_strnstr(exceptions, ft_strjoin(",", ft_strjoin(current->content, ",")), ft_strlen(exceptions)) 
+			&& current_num < min_num))
+			{
+				min_num = current_num;
+				min_node = current;
+			}
+		}
+		current = current->next;
+	}
+	return (min_node);
+}
 
 static void	ra_or_rra(t_list **headA, t_list *min_node)
 {
@@ -176,29 +203,40 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 				}
 			}
 			current = current->next;
+			// ft_printf("Min_num is: %d\n", min_num);
 		} // Now min_node is the node with the smallest number;
 		if (min_node == NULL)
 		{
-			rra(headA);
-			break ;
+			if (*headB == NULL)
+				break ;
+			else
+			{
+				while (*headB != NULL)
+					pa(headA, headB);
+				min_node = last_checker(headA, exceptions);
+				if (!min_node)
+					return ;
+				min_num = ft_atoi(min_node->content);
+				size = ft_lstsize(*headA);
+				exceptions = ft_strdup(",");
+			}
 		}
 		if (size == ft_lstsize(*headA))
 		{
 			last_ordered = min_node;
-			if (neighbour_checker_first(headA, min_node, min_num, &exceptions, &last_ordered))
-				size = size - 2;
-			else
+			if (!(neighbour_checker_first(headA, min_node, min_num, &exceptions, &last_ordered)))
 			{
 				exceptions = ft_strjoin(exceptions, min_node->content);
 				exceptions = ft_strjoin(exceptions, ",");
-				size--;
 			}
+			size--;
 		}
 		else
 		{
 			current = *headA;
 			if (!(neighbour_checker(headA, min_node, min_num, &exceptions, &last_ordered)))
 			{
+				//ft_printf("no neighbours\n");
 				ra_or_rra(headA, min_node); // puts the min_node to the top if nodes are not next to each other;
 				if (last_ordered->next == min_node)
 				{
@@ -213,7 +251,6 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 				}
 				exceptions = ft_strjoin(exceptions, min_node->content);
 				exceptions = ft_strjoin(exceptions, ",");
-				size--;
 			}
 			else
 			{
@@ -228,13 +265,9 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 					while (current->next != NULL)
 						current = current->next;
 					last_ordered = current;
-					size--;
 				}
 				else
-				{
 					last_ordered = last_ordered->next->next;
-					size = size - 2;
-				}
 			}
 		}
 		// ft_printf("last_ordered at the end is: %s\n", last_ordered->content);
@@ -242,12 +275,10 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 		// ft_printf("List A at the end is: ");
 		// print_list(headA);
 		// ft_printf("\n");
-		//ft_printf("Last ordered is: %s\n", last_ordered->content);
-
+		// ft_printf("Last ordered is: %s\n", last_ordered->content);
 		// ft_printf("List B at the end is: ");
 		// print_list(headB);
-		// write (1, "\n", 1);
 		// ft_printf("----------------\n");
-
+		
 	}
 }
