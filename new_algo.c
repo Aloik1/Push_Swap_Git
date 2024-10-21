@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:35:45 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/21 18:18:27 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/21 19:36:48 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,12 @@ static void	ra_or_rra(t_list **headA, t_list *min_node)
 	{
 
 		while (min_node->next != NULL)
-		{
 			ra(headA);
-			ft_printf("ra\n");
-		}
 	}
 	else
 	{
 		while (min_node->next != NULL)
-		{
 			rra(headA);
-			ft_printf("rra\n");
-		}
 	}
 }
 
@@ -81,7 +75,6 @@ static int	neighbour_checker(t_list **headA, t_list *min_node, int min_num, char
 	{
 		ra_or_rra(headA, min_node);
 		sa(headA);
-		ft_printf("sa\n");
 		*exceptions = ft_strjoin(*exceptions, next_min_node->content);
 		*exceptions = ft_strjoin(*exceptions, ",");
 		*exceptions = ft_strjoin(*exceptions, min_node->content);
@@ -132,7 +125,6 @@ static int	neighbour_checker_first(t_list **headA, t_list *min_node, int min_num
 	{
 		ra_or_rra(headA, min_node);
 		sa(headA);
-		ft_printf("sa\n");
 		*exceptions = ft_strjoin(*exceptions, next_min_node->content);
 		*exceptions = ft_strjoin(*exceptions, ",");
 		*exceptions = ft_strjoin(*exceptions, min_node->content);
@@ -188,7 +180,6 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 		if (min_node == NULL)
 		{
 			rra(headA);
-			ft_printf("rra\n");
 			break ;
 		}
 		if (size == ft_lstsize(*headA))
@@ -216,12 +207,9 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 				else
 				{
 					pb(headA, headB);
-					ft_printf("pb\n");
 					ra_or_rra(headA, last_ordered);
 					pa(headA, headB);
-					ft_printf("pa\n");
 					last_ordered = min_node;
-					
 				}
 				exceptions = ft_strjoin(exceptions, min_node->content);
 				exceptions = ft_strjoin(exceptions, ",");
@@ -232,14 +220,10 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 				if (last_ordered->next != min_node)
 				{
 					pb(headA, headB);
-					ft_printf("pb\n");
 					pb(headA, headB);
-					ft_printf("pb\n");
 					ra_or_rra(headA, last_ordered); // now he have our last_ordered at the top
 					pa(headA, headB);
-					ft_printf("pa\n");
 					pa(headA, headB);
-					ft_printf("pa\n");
 					current = *headA;
 					while (current->next != NULL)
 						current = current->next;
