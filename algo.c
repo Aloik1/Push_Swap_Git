@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:35:45 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 20:56:53 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/20 20:44:28 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@
 void	ra_or_rra(t_list **headA, t_list *min_node)
 {
 	int		i;
-	int		first;
 	t_list	*current;
 
 	i = 0;
-	first = 0;
 	current = *headA;
 	while (current != min_node)
 	{
@@ -104,7 +102,6 @@ void	algo(t_list **headA, t_list **headB, int size)
 {
 	t_list		*current;
 	t_list		*min_node;
-	int		i;
 	int		min_num;
 	int		current_num;
 
@@ -128,7 +125,6 @@ void	algo(t_list **headA, t_list **headB, int size)
 		{
 			// ft_printf("A list size is: %d", ft_lstsize(*headA));
 			// write (1, "\n", 1);	
-			i = 0;
 			current = *headA;
 			if (*headA == min_node)
 			{

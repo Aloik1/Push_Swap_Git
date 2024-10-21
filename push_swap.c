@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/19 20:57:36 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/21 13:32:04 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	main(int argc, char **argv)
 		}
 	}
 	headB = NULL;
-	//new_algo(&headA, &headB, argc - 1);
-	algo(&headA, &headB, argc - 1);
+	new_algo(&headA, &headB, argc - 1);
+	// algo(&headA, &headB, argc - 1);
 	// ft_printf("A list in the end is: ");
 	// print_list(&headA);
 	// write (1, "\n", 1);
