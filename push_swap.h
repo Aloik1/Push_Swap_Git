@@ -32,7 +32,7 @@ void	rrr(t_list **headA, t_list **headB);
 void	algo(t_list **headA, t_list **headB, int size);
 void	new_algo(t_list **headA, t_list **headB, int size);
 void	new_algo_modified(t_list **headA, t_list **headB, int size);
-//void	another_algo(t_list **headA, t_list **headB, int size);
+void	another_algo(t_list **headA, t_list **headB, int size);
 
 
 #endif

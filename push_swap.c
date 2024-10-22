@@ -58,22 +58,18 @@ int	main(int argc, char **argv)
 		}
 	}
 	headB = NULL;
-	// i = 0;
-	// while (i != (argc - 1) / 2)
-	// {
-	// 	pb(&headA, &headB);
-	// 	i++;
-	// }
+	// --------------------------------------------
+	i = 0;
+	while (i != (argc - 1) / 2)
+	{
+		pb(&headA, &headB);
+		i++;
+	}
 	// new_algo_modified(&headA, &headB, ft_lstsize(headA));
-	
-	// while (headB != NULL)
-	// {
-	// 	pa(&headA, &headB);
-	// 	i--;
-	// }
+	// ---------------------------------------------
 	// ft_printf("Starting second algo\n");
 	// new_algo(&headA, &headB, ft_lstsize(headA));
-	algo(&headA, &headB, ft_lstsize(headA));
+	another_algo(&headA, &headB, ft_lstsize(headA));
 	ft_printf("A list in the end is: ");
 	print_list(&headA);
 	write (1, "\n", 1);

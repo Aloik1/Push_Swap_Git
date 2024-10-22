@@ -13,18 +13,18 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static void	print_list(t_list **headA)
-{
-	t_list	*current;
+// static void	print_list(t_list **headA)
+// {
+// 	t_list	*current;
 
-	current = *headA;
-	while (current != NULL)
-	{
-		ft_printf("%s", current->content);
-		ft_printf(" ");
-		current = current->next;
-	}
-}
+// 	current = *headA;
+// 	while (current != NULL)
+// 	{
+// 		ft_printf("%s", current->content);
+// 		ft_printf(" ");
+// 		current = current->next;
+// 	}
+// }
 
 
 
@@ -105,7 +105,7 @@ void	algo(t_list **headA, t_list **headB, int size)
 	int		min_num;
 	int		current_num;
 
-	size = ft_lstsize(*headA);
+	// size = ft_lstsize(*headA);
 	// ft_printf("A list in the end is: ");
 	// print_list(headA);
 	// ft_printf("\n");
