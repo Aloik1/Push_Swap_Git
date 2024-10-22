@@ -58,13 +58,13 @@ int	main(int argc, char **argv)
 		}
 	}
 	headB = NULL;
-	i = 0;
-	while (i != (argc - 1) / 2)
-	{
-		pb(&headA, &headB);
-		i++;
-	}
-	new_algo(&headA, &headB, ft_lstsize(headA));
+	// i = 0;
+	// while (i != (argc - 1) / 2)
+	// {
+	// 	pb(&headA, &headB);
+	// 	i++;
+	// }
+	// new_algo_modified(&headA, &headB, ft_lstsize(headA));
 	
 	// while (headB != NULL)
 	// {
@@ -72,14 +72,14 @@ int	main(int argc, char **argv)
 	// 	i--;
 	// }
 	// ft_printf("Starting second algo\n");
-	// new_algo(&headB, &headA, ft_lstsize(headB));
-	//algo(&headA, &headB, (argc - 1) / 2);
+	// new_algo(&headA, &headB, ft_lstsize(headA));
+	algo(&headA, &headB, ft_lstsize(headA));
 	ft_printf("A list in the end is: ");
 	print_list(&headA);
 	write (1, "\n", 1);
-	ft_printf("B list in the end is: ");
-	print_list(&headB);
-	write (1, "\n", 1);
+	// ft_printf("B list in the end is: ");
+	// print_list(&headB);
+	// write (1, "\n", 1);
 	ft_lstclear(&headA, free);
 	ft_lstclear(&headB, free);
 	return (0);

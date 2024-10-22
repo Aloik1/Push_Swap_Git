@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR)
+CFLAGS = -I$(LIBFT_DIR)
 NAME = push_swap
 AR = ar rcs
 LIBFT_DIR = libft
@@ -8,7 +8,7 @@ PRINTF_DIR = libft/ft_printf
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 SRC = push_swap.c		sa_sb_ss.c	pa_pb.c		ra_rb_rr.c \
-	  rra_rrb_rrr.c		new_algo.c	algo.c \
+	  rra_rrb_rrr.c		new_algo.c	algo.c		new_algo_modified.c \
 
 OBJ = $(SRC:.c=.o)
 

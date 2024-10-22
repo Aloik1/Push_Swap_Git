@@ -177,7 +177,7 @@ static int	neighbour_checker_first(t_list **headA, t_list *min_node, int min_num
 		return (0);
 	return (0);
 }
-void	new_algo_modified(t_list **headA, t_list **headB, int size)
+void	another_algo(t_list **headA, t_list **headB, int size)
 {
 	t_list	*last_ordered;
 	t_list	*min_node;
@@ -185,6 +185,7 @@ void	new_algo_modified(t_list **headA, t_list **headB, int size)
 	char	*exceptions;
 	int	current_num;
 	int	min_num;
+	int	i;
 
 	exceptions = ft_strdup(",");
 	last_ordered = NULL;
@@ -209,73 +210,8 @@ void	new_algo_modified(t_list **headA, t_list **headB, int size)
 			}
 			current = current->next;
 			//ft_printf("Min_num is: %d\n", min_num);
-		} // Now min_node is the node with the smallest number;
-		if (min_node == NULL)
-		{
-			if (*headB == NULL)
-				break ;
-			else
-			{
-				while (*headB != NULL)
-					pa(headA, headB);
-				exceptions = ft_strdup(",");
-				min_node = last_checker(headA, exceptions);
-				if (!min_node)
-					return ;
-				min_num = ft_atoi(min_node->content);
-				size = ft_lstsize(*headA);
-				
-			}
-		}
-		if (size == ft_lstsize(*headA))
-		{
-			last_ordered = min_node;
-			if (!(neighbour_checker_first(headA, min_node, min_num, &exceptions, &last_ordered)))
-			{
-				exceptions = ft_strjoin(exceptions, min_node->content);
-				exceptions = ft_strjoin(exceptions, ",");
-			}
-			size--;
-		}
-		else
-		{
-			current = *headA;
-			if (!(neighbour_checker(headA, min_node, min_num, &exceptions, &last_ordered)))
-			{
-				//ft_printf("no neighbours\n");
-				ra_or_rra(headA, min_node); // puts the min_node to the top if nodes are not next to each other;
-				if (last_ordered->next == min_node)
-				{
-					last_ordered = min_node;
-				}
-				else
-				{
-					pb(headA, headB);
-					ra_or_rra(headA, last_ordered);
-					pa(headA, headB);
-					last_ordered = min_node;
-				}
-				exceptions = ft_strjoin(exceptions, min_node->content);
-				exceptions = ft_strjoin(exceptions, ",");
-			}
-			else
-			{
-				//ft_printf("found neighbours\n");
-				if (last_ordered->next != min_node)
-				{
-					pb(headA, headB);
-					pb(headA, headB);
-					ra_or_rra(headA, last_ordered); // now he have our last_ordered at the top
-					pa(headA, headB);
-					pa(headA, headB);
-					current = *headA;
-					while (current->next != NULL)
-						current = current->next;
-					last_ordered = current;
-				}
-				else
-					last_ordered = last_ordered->next->next;
-			}
+		 // Now min_node is the node with the smallest number;
+
 		}
 		// ft_printf("last_ordered at the end is: %s\n", last_ordered->content);
 		// ft_printf("Exceptions list is: %s\n", exceptions);

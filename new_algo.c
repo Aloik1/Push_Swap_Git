@@ -71,6 +71,9 @@ static int	neighbour_checker(t_list **headA, t_list *min_node, int min_num, char
 		}
 		current = current->next;
 	}
+	// ft_printf("Next min num is: %d\n", next_min_num);
+	if (next_min_node == NULL)
+		return (0);
 	if (next_min_node->next == min_node)
 	{
 		ra_or_rra(headA, min_node);
@@ -119,6 +122,7 @@ static int	neighbour_checker_first(t_list **headA, t_list *min_node, int min_num
 		}
 		current = current->next;
 	}
+	// ft_printf("Next min num is: %d\n", next_min_num);
 	if (next_min_node == NULL)
 		return (0);
 	if (next_min_node->next == min_node)
@@ -156,14 +160,17 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 	int	current_num;
 	int	min_num;
 
+
 	exceptions = ft_strdup(",");
 	last_ordered = NULL;
+	current = *headA;
+	min_node = current;
 	while (min_node != NULL)
 	{
-		current = *headA;
+		
 		min_num = INT_MAX;
 		min_node = NULL;
-		
+		current = *headA;
 		while (current !=NULL)
 		{
 			current_num = ft_atoi(current->content);
@@ -173,12 +180,17 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 				{
 					min_num = current_num;
 					min_node = current;
+					// ft_printf("NEW min num is: %d\n", min_num);
 				}
+				// ft_printf("Min num is: %d\n", min_num);
 			}
 			current = current->next;
 		} // Now min_node is the node with the smallest number;
+		
 		if (min_node == NULL)
 		{
+			if (last_ordered->next == NULL)
+				break ;
 			rra(headA);
 			break ;
 		}
@@ -189,6 +201,7 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 				size = size - 2;
 			else
 			{
+				//ft_printf("No first neighbours\n");
 				exceptions = ft_strjoin(exceptions, min_node->content);
 				exceptions = ft_strjoin(exceptions, ",");
 				size--;
@@ -242,7 +255,7 @@ void	new_algo(t_list **headA, t_list **headB, int size)
 		// ft_printf("List A at the end is: ");
 		// print_list(headA);
 		// ft_printf("\n");
-		//ft_printf("Last ordered is: %s\n", last_ordered->content);
+		// ft_printf("Last ordered is: %s\n", last_ordered->content);
 
 		// ft_printf("List B at the end is: ");
 		// print_list(headB);
