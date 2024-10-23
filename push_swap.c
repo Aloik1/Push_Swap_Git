@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/21 23:14:19 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/22 23:55:27 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 	headB = NULL;
 	// --------------------------------------------
 	i = 0;
-	while (i != (argc - 1) / 2)
+	while (i < ft_lstsize(headA) / 2 + 1)
 	{
 		pb(&headA, &headB);
 		i++;
