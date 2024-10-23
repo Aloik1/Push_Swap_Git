@@ -1,6 +1,0 @@
-{
-	"emmet.useInlineCompletions": true,
-	"files.associations": {
-		"libft.h": "c"
-	}
-}
