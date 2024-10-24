@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/23 21:32:03 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/24 14:36:06 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,17 @@ int	main(int argc, char **argv)
 	headB = NULL;
 	// --------------------------------------------
 	i = 0;
-	while (i <= ft_lstsize(headA) / 2 + 1)
+	i = ft_lstsize(headA);
+	ft_printf("A list size is: %d\n", i);
+	if (i % 2 == 0)
 	{
-		pb(&headA, &headB);
-		i++;
+		i = i / 2;
+		ft_printf("A list size is: %d\n", i);
+		while (i > 0)
+		{
+			pb(&headA, &headB);
+			i--;
+		}
 	}
 	// new_algo_modified(&headA, &headB, ft_lstsize(headA));
 	// ---------------------------------------------

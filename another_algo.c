@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 18:32:33 by aloiki            #+#    #+#             */
-/*   Updated: 2024/10/24 00:02:52 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/24 14:39:25 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ static int	neighbour_checkerA_B(t_list **headA, t_list **headB, t_list *min_node
 			else/*if (min_nodeA->next == next_min_nodeA && next_min_nodeB->next == min_nodeB)*/
 			{
 				ra_or_rra_or_rrr(headA, headB, next_min_nodeA, min_nodeB);
-				sb(headA);
+				sb(headB);
 				exception_adder(exceptions, min_nodeA->content, min_nodeB->content, next_min_nodeA->content, next_min_nodeB->content);
 				return (1);
 			}
@@ -220,7 +220,7 @@ static int	neighbour_checkerA_B(t_list **headA, t_list **headB, t_list *min_node
 				pb(headA, headB);
 				ra_or_rra_or_rrr(headA, headB, next_min_nodeA, min_nodeB->next->next);
 				pa(headA, headB);
-				sa(headB);
+				sa(headA);
 				exception_adder(exceptions, min_nodeA->content, min_nodeB->content, next_min_nodeA->content, next_min_nodeB->content);
 				return (2);
 			}
@@ -230,7 +230,7 @@ static int	neighbour_checkerA_B(t_list **headA, t_list **headB, t_list *min_node
 				pb(headA, headB);
 				ra_or_rra_or_rrr(headA, headB, next_min_nodeA, min_nodeB->next->next);
 				pa(headA, headB);
-				sa(headB);
+				sa(headA);
 				exception_adder(exceptions, min_nodeA->content, min_nodeB->content, next_min_nodeA->content, next_min_nodeB->content);
 				return (2);
 			}
@@ -263,6 +263,7 @@ static int	neighbour_checkerA_B(t_list **headA, t_list **headB, t_list *min_node
 		}
 		else
 		{
+
 			ra_or_rra_or_rrr(headA, headB, min_nodeA, min_nodeB);
 			return (0);
 		}
@@ -310,7 +311,151 @@ static int	neighbour_checkerA_B(t_list **headA, t_list **headB, t_list *min_node
 		return (0);
 	}
 }
-static void	last_ordered_establisher_both_neighbours(t_list **last_orderedA, t_list **last_orderedB, t_list **headA, t_list **headB)
+// static void	last_ordered_establisher_both_neighbours(t_list **last_orderedA, t_list **last_orderedB, t_list **headA, t_list **headB)
+// {
+// 	t_list	*currentA;
+// 	t_list	*currentB;
+	
+// 	currentA = *headA;
+// 	while (currentA->next->next != NULL)
+// 		currentA = currentA->next;
+// 	// --------------------------------
+// 	currentB = *headB;
+// 	while (currentB->next->next != NULL)
+// 		currentB = currentB->next;
+// 	if (*last_orderedA == NULL && *last_orderedB == NULL)
+// 	{
+// 		ft_printf("No last ordered yet\n");
+// 		*last_orderedA = currentA->next;
+// 		*last_orderedB = currentB->next;
+// 		return ;
+// 	}
+// 	if ((*last_orderedA)->next != currentA && (*last_orderedB)->next != currentB)
+// 	{
+// 		ft_printf("Need to order both last ordered\n");
+// 		pb(headA, headB);
+// 		pb(headA, headB);
+// 		ra_or_rra_or_rrr(headA, headB, *last_orderedA, currentA->next);
+// 		pa(headA, headB);
+// 		pa(headA, headB);
+// 		// ---------------------------------
+// 		pa(headA, headB);
+// 		pa(headA, headB);
+// 		ra_or_rra_or_rrr(headA, headB, currentA->next, *last_orderedB);
+// 		pb(headA, headB);
+// 		pb(headA, headB);
+// 		*last_orderedA = currentA->next;
+// 		*last_orderedB = currentB->next;
+// 		return ;
+// 	}
+// 	if ((*last_orderedA)->next == currentA && (*last_orderedB)->next != currentB)
+// 	{
+// 		ft_printf("Need to order last ordered B\n");
+// 		*last_orderedA = currentA->next;
+// 		pa(headA, headB);
+// 		pa(headA, headB);
+// 		ra_or_rra_or_rrr(headA, headB, currentA->next->next->next, *last_orderedB);
+// 		pb(headA, headB);
+// 		pb(headA, headB);
+// 		*last_orderedB = currentB->next;
+// 		return ;
+// 	}
+// 	if ((*last_orderedA)->next != currentA && (*last_orderedB)->next == currentB)
+// 	{
+// 		ft_printf("Need to order last ordered A\n");
+// 		*last_orderedB = currentB->next;
+// 		pb(headA, headB);
+// 		pb(headA, headB);
+// 		ra_or_rra_or_rrr(headA, headB, *last_orderedA, currentB->next->next->next);
+// 		pa(headA, headB);
+// 		pa(headA, headB);
+// 		*last_orderedA = currentA->next;
+// 		return ;
+// 	}
+// 	else
+// 	{
+// 		ft_printf("Both neighbours are already ordered");
+// 		*last_orderedA = currentA->next;
+// 		*last_orderedB = currentB->next;
+// 	}
+// }
+
+// static void	last_ordered_establisher_B_neighbour(t_list **last_orderedA, t_list **last_orderedB, t_list **headA, t_list **headB)
+// {
+// 	t_list	*currentA;
+// 	t_list	*currentB;
+	
+// 	currentA = *headA;
+// 	while (currentA->next != NULL)
+// 		currentA = currentA->next;
+// 	// --------------------------------
+// 	currentB = *headB;
+// 	while (currentB->next->next != NULL)
+// 		currentB = currentB->next;
+// 	if (*last_orderedA == NULL && *last_orderedB == NULL)
+// 	{
+// 		ft_printf("No last ordered yet\n");
+// 		*last_orderedA = currentA;
+// 		*last_orderedB = currentB->next;
+// 		return ;
+// 	}
+// 	if ((*last_orderedB)->next != currentB && (*last_orderedA)->next != currentA)
+// 	{
+// 		ft_printf("Need to order B\n");
+// 		pa(headA, headB);
+// 		pa(headA, headB);
+// 		ra_or_rra_or_rrr(headA, headB, currentB, *last_orderedB);
+// 		pb(headA, headB);
+// 		pb(headA, headB);
+// 		*last_orderedB = currentB->next;
+// 		return ;
+// 	}
+// 	if ((*last_orderedB)->next == currentB)
+// 	{
+// 		*last_orderedB = currentB->next;
+// 		return ;
+// 	}	
+// }
+
+// static void	last_ordered_establisher_A_neighbour(t_list **last_orderedA, t_list **last_orderedB, t_list **headA, t_list **headB)
+// {
+// 	t_list	*currentA;
+// 	t_list	*currentB;
+	
+// 	currentA = *headA;
+// 	while (currentA->next->next != NULL)
+// 		currentA = currentA->next;
+// 	// --------------------------------
+// 	currentB = *headB;
+// 	while (currentB->next != NULL)
+// 		currentB = currentB->next;
+	
+// 	if (*last_orderedA == NULL && *last_orderedB == NULL)
+// 	{
+// 		ft_printf("No last ordered yet\n");
+// 		*last_orderedA = currentA->next;
+// 		*last_orderedB = currentB;
+// 		return ;
+// 	}
+// 	if ((*last_orderedA != NULL) && (*last_orderedA)->next != currentA)
+// 	{
+// 		ft_printf("Need to order A\n");
+// 		pb(headA, headB);
+// 		pb(headA, headB);
+// 		ra_or_rra_or_rrr(headA, headB, *last_orderedA, currentA);
+// 		pa(headA, headB);
+// 		pa(headA, headB);
+// 		*last_orderedA = currentA->next;
+// 		return ;
+// 	}
+// 	else /*((*last_orderedA)->next == currentA)*/
+// 	{
+// 		*last_orderedA = currentA->next;
+// 		return ;
+// 	}	
+// }
+
+static void	last_ordered_establisher_neighbours(t_list **last_orderedA, t_list **last_orderedB, t_list **headA, t_list **headB)
 {
 	t_list	*currentA;
 	t_list	*currentB;
@@ -322,138 +467,65 @@ static void	last_ordered_establisher_both_neighbours(t_list **last_orderedA, t_l
 	currentB = *headB;
 	while (currentB->next->next != NULL)
 		currentB = currentB->next;
-	if (*last_orderedA == NULL && *last_orderedB == NULL)
-	{
-		ft_printf("No last ordered yet\n");
-		*last_orderedA = currentA->next;
-		*last_orderedB = currentB->next;
-		return ;
-	}
-	if ((*last_orderedA)->next != currentA && (*last_orderedB)->next != currentB)
-	{
-		ft_printf("Need to order both last ordered\n");
-		pb(headA, headB);
-		pb(headA, headB);
-		ra_or_rra_or_rrr(headA, headB, *last_orderedA, currentA->next);
-		pa(headA, headB);
-		pa(headA, headB);
-		// ---------------------------------
-		pa(headA, headB);
-		pa(headA, headB);
-		ra_or_rra_or_rrr(headA, headB, currentA->next, *last_orderedB);
-		pb(headA, headB);
-		pb(headA, headB);
-		*last_orderedA = currentA->next;
-		*last_orderedB = currentB->next;
-		return ;
-	}
-	if ((*last_orderedA)->next == currentA && (*last_orderedB)->next != currentB)
-	{
-		ft_printf("Need to order last ordered B\n");
-		*last_orderedA = currentA->next;
-		pa(headA, headB);
-		pa(headA, headB);
-		ra_or_rra_or_rrr(headA, headB, currentA->next->next->next, *last_orderedB);
-		pb(headA, headB);
-		pb(headA, headB);
-		*last_orderedB = currentB->next;
-		return ;
-	}
-	if ((*last_orderedA)->next != currentA && (*last_orderedB)->next == currentB)
-	{
-		ft_printf("Need to order last ordered A\n");
-		*last_orderedB = currentB->next;
-		pb(headA, headB);
-		pb(headA, headB);
-		ra_or_rra_or_rrr(headA, headB, *last_orderedA, currentB->next->next->next);
-		pa(headA, headB);
-		pa(headA, headB);
-		*last_orderedA = currentA->next;
-		return ;
-	}
-	else
-	{
-		ft_printf("Both neighbours are already ordered");
-		*last_orderedA = currentA->next;
-		*last_orderedB = currentB->next;
-	}
-}
-
-static void	last_ordered_establisher_B_neighbour(t_list **last_orderedA, t_list **last_orderedB, t_list **headA, t_list **headB)
-{
-	t_list	*currentA;
-	t_list	*currentB;
 	
-	currentA = *headA;
-	while (currentA->next != NULL)
-		currentA = currentA->next;
-	// --------------------------------
-	currentB = *headB;
-	while (currentB->next->next != NULL)
-		currentB = currentB->next;
 	if (*last_orderedA == NULL && *last_orderedB == NULL)
 	{
 		ft_printf("No last ordered yet\n");
-		*last_orderedA = currentA;
+		*last_orderedA = currentA->next;
 		*last_orderedB = currentB->next;
 		return ;
 	}
-	if ((*last_orderedB)->next != currentB)
+	if ((*last_orderedA != NULL) && (*last_orderedA)->next != currentA
+		&& (*last_orderedB != NULL) && (*last_orderedB)->next != currentB)
+	{
+		ft_printf("Need to order both\n");
+		pb(headA, headB);
+		pb(headA, headB);
+		ra_or_rra_or_rrr(headA, headB, *last_orderedA, currentA);
+		pa(headA, headB);
+		pa(headA, headB);
+		// --------------------------------------
+		pa(headA, headB);
+		pa(headA, headB);
+		ra_or_rra_or_rrr(headA, headB, currentB, *last_orderedB);
+		pb(headA, headB);
+		pb(headA, headB);
+		*last_orderedA = currentA->next;
+		*last_orderedB = currentB->next;
+		return ;
+	}
+	if ((*last_orderedA != NULL) && (*last_orderedA)->next == currentA
+		&& (*last_orderedB != NULL) && (*last_orderedB)->next != currentB)
 	{
 		ft_printf("Need to order B\n");
+		*last_orderedA = currentA->next;
 		pa(headA, headB);
 		pa(headA, headB);
 		ra_or_rra_or_rrr(headA, headB, currentB, *last_orderedB);
 		pb(headA, headB);
 		pb(headA, headB);
 		*last_orderedB = currentB->next;
-		return ;
 	}
-	if ((*last_orderedB)->next == currentB)
+	if ((*last_orderedA != NULL) && (*last_orderedA)->next != currentA
+		&& (*last_orderedB != NULL) && (*last_orderedB)->next == currentB)
 	{
+		ft_printf("Need to order A\n");
 		*last_orderedB = currentB->next;
-		return ;
-	}	
-}
-
-static void	last_ordered_establisher_A_neighbour(t_list **last_orderedA, t_list **last_orderedB, t_list **headA, t_list **headB)
-{
-	t_list	*currentA;
-	t_list	*currentB;
-	
-	currentA = *headA;
-	while (currentA->next->next != NULL)
-		currentA = currentA->next;
-	// --------------------------------
-	currentB = *headB;
-	while (currentB->next != NULL)
-		currentB = currentB->next;
-	
-	if (*last_orderedA == NULL && *last_orderedB == NULL)
-	{
-		ft_printf("No last ordered yet\n");
-		*last_orderedA = currentA->next;
-		*last_orderedB = currentB;
-		return ;
-	}
-	if ((*last_orderedA != NULL) && (*last_orderedA)->next != currentA)
-	{
-		ft_printf("Need to order B\n");
 		pb(headA, headB);
 		pb(headA, headB);
 		ra_or_rra_or_rrr(headA, headB, *last_orderedA, currentA);
 		pa(headA, headB);
 		pa(headA, headB);
 		*last_orderedA = currentA->next;
-		return ;
 	}
 	else /*((*last_orderedA)->next == currentA)*/
 	{
+		ft_printf("Both already ordered\n");
 		*last_orderedA = currentA->next;
+		*last_orderedB = currentB->next;
 		return ;
 	}	
 }
-
 
 static void	last_ordered_establisher(t_list **last_orderedA, t_list **last_orderedB, t_list **headA, t_list **headB)
 {
@@ -487,7 +559,7 @@ static void	last_ordered_establisher(t_list **last_orderedA, t_list **last_order
 		ra_or_rra_or_rrr(headA, headB, *last_orderedA, currentA);
 		pa(headA, headB);
 		pa(headA, headB);
-		ra_or_rra_or_rrr(headA, headB, currentA, *last_orderedB);
+		ra_or_rra_or_rrr(headA, headB, currentA->next, *last_orderedB);
 		pb(headA, headB);
 		*last_orderedA = currentA;
 		*last_orderedB = currentB;
@@ -498,7 +570,7 @@ static void	last_ordered_establisher(t_list **last_orderedA, t_list **last_order
 		ft_printf("Need to order last ordered B\n");
 		*last_orderedA = currentA;
 		pa(headA, headB);
-		ra_or_rra_or_rrr(headA, headB, currentA, *last_orderedB);
+		ra_or_rra_or_rrr(headA, headB, currentA->next, *last_orderedB);
 		pb(headA, headB);
 		*last_orderedB = currentB;
 		return ;
@@ -558,12 +630,17 @@ static void	final_combiner(t_list **headA, t_list **headB)
 			ft_printf("size is full\n");
 			if (ft_atoi((*headA)->content) < ft_atoi((*headB)->content))
 			{
-				min_node = *headA;
-				rrr(headA, headB);
-				pa(headA, headB);
+				if (ft_atoi((*headB)->content) < ft_atoi(current->content))
+				{
+					ft_printf("headA is smaller than headB and current\n");
+					min_node = *headA;
+					rrr(headA, headB);
+					pa(headA, headB);
+				}
 			}
 			else
 			{
+				ft_printf("headB is bigger than headA\n");
 				min_node = *headB;
 				rrr(headA, headB);
 				pa(headA, headB);
@@ -671,12 +748,12 @@ void	another_algo(t_list **headA, t_list **headB, int size)
 			ft_printf("List B is: ");
 			print_list(headB);
 			ft_printf("\n");
-			last_ordered_establisher_both_neighbours(&last_orderedA, &last_orderedB, headA, headB);
+			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
 		}
 		if (neighbour_checker == 2)
 		{
 			ft_printf("neighbour checker returned 2\n");
-			last_ordered_establisher_B_neighbour(&last_orderedA, &last_orderedB, headA, headB);
+			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
 			ft_printf("List A is: ");
 			print_list(headA);
 			ft_printf("\n");
@@ -688,7 +765,7 @@ void	another_algo(t_list **headA, t_list **headB, int size)
 		if (neighbour_checker == 3)
 		{
 			ft_printf("neighbour checker returned 3\n");
-			last_ordered_establisher_A_neighbour(&last_orderedA, &last_orderedB, headA, headB);
+			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
 			ft_printf("List A is: ");
 			print_list(headA);
 			ft_printf("\n");
@@ -699,7 +776,7 @@ void	another_algo(t_list **headA, t_list **headB, int size)
 		if (neighbour_checker == 4)
 		{
 			ft_printf("neighbour checker returned 4\n");
-			last_ordered_establisher_B_neighbour(&last_orderedA, &last_orderedB, headA, headB);
+			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
 			ft_printf("List A is: ");
 			print_list(headA);
 			ft_printf("\n");
@@ -710,7 +787,7 @@ void	another_algo(t_list **headA, t_list **headB, int size)
 		if (neighbour_checker == 5)
 		{
 			ft_printf("neighbour checker returned 5\n");
-			last_ordered_establisher_A_neighbour(&last_orderedA, &last_orderedB, headA, headB);
+			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
 			ft_printf("List A is: ");
 			print_list(headA);
 			ft_printf("\n");
