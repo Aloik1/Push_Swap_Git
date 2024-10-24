@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 18:32:33 by aloiki            #+#    #+#             */
-/*   Updated: 2024/10/24 17:57:33 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/24 18:01:58 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -568,64 +568,10 @@ void	another_algo(t_list **headA, t_list **headB, int size)
 		// ft_printf("Min num A is: %s\n", min_nodeA->content);
 		// ft_printf("Min num B is: %s\n", min_nodeB->content);
 		neighbour_checker = neighbour_checkerA_B(headA, headB, min_nodeA, min_nodeB, &exceptions);
-		if (neighbour_checker == 1)
-		{
-			// ft_printf("neighbour checker returned 1\n");
-			// ft_printf("List A is: ");
-			// print_list(headA);
-			// ft_printf("\n");
-			// ft_printf("List B is: ");
-			// print_list(headB);
-			// ft_printf("\n");
-			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
-		}
-		if (neighbour_checker == 2)
-		{
-			// ft_printf("neighbour checker returned 2\n");
-			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
-			// ft_printf("List A is: ");
-			// print_list(headA);
-			// ft_printf("\n");
-			// ft_printf("List B is: ");
-			// print_list(headB);
-			// ft_printf("\n");
-			
-		}
-		if (neighbour_checker == 3)
-		{
-			// ft_printf("neighbour checker returned 3\n");
-			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
-			// ft_printf("List A is: ");
-			// print_list(headA);
-			// ft_printf("\n");
-			// ft_printf("List B is: ");
-			// print_list(headB);
-			// ft_printf("\n");
-		}
-		if (neighbour_checker == 4)
-		{
-			// ft_printf("neighbour checker returned 4\n");
-			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
-			// ft_printf("List A is: ");
-			// print_list(headA);
-			// ft_printf("\n");
-			// ft_printf("List B is: ");
-			// print_list(headB);
-			// ft_printf("\n");
-		}
-		if (neighbour_checker == 5)
-		{
-			// ft_printf("neighbour checker returned 5\n");
-			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
-			// ft_printf("List A is: ");
-			// print_list(headA);
-			// ft_printf("\n");
-			// ft_printf("List B is: ");
-			// print_list(headB);
-			// ft_printf("\n");
-		}
 		if (!(neighbour_checker))
 			last_ordered_establisher(&last_orderedA, &last_orderedB, headA, headB);
+		else
+			last_ordered_establisher_neighbours(&last_orderedA, &last_orderedB, headA, headB);
 		// ft_printf("Exceptions are: %s\n", exceptions);
 		// ft_printf("Last ordered A is: %s, Last ordered B is: %s\n", last_orderedA->content, last_orderedB->content);
 		// ft_printf("List A is: ");
