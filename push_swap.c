@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:32:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/24 14:36:06 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/24 17:47:11 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ int	main(int argc, char **argv)
 	// --------------------------------------------
 	i = 0;
 	i = ft_lstsize(headA);
-	ft_printf("A list size is: %d\n", i);
+	// ft_printf("A list size is: %d\n", i);
 	if (i % 2 == 0)
 	{
 		i = i / 2;
-		ft_printf("A list size is: %d\n", i);
+		// ft_printf("A list size is: %d\n", i);
 		while (i > 0)
 		{
 			pb(&headA, &headB);
@@ -80,9 +80,9 @@ int	main(int argc, char **argv)
 	ft_printf("A list in the end is: ");
 	print_list(&headA);
 	write (1, "\n", 1);
-	ft_printf("B list in the end is: ");
-	print_list(&headB);
-	write (1, "\n", 1);
+	// ft_printf("B list in the end is: ");
+	// print_list(&headB);
+	// write (1, "\n", 1);
 	ft_lstclear(&headA, free);
 	ft_lstclear(&headB, free);
 	return (0);
