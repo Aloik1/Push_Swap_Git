@@ -6,7 +6,7 @@
 /*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:43:28 by ikondrat          #+#    #+#             */
-/*   Updated: 2024/10/21 22:43:01 by aloiki           ###   ########.fr       */
+/*   Updated: 2024/10/24 19:37:14 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	algo(t_list **headA, t_list **headB, int size);
 void	new_algo(t_list **headA, t_list **headB, int size);
 void	new_algo_modified(t_list **headA, t_list **headB, int size);
 void	another_algo(t_list **headA, t_list **headB, int size);
+void	latest_algo(t_list **headA, t_list **headB, int size);
 
 
 #endif
