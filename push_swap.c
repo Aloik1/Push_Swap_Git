@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanherr <juanherr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aloiki <aloiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/20 13:19:29 by juanherr          #+#    #+#             */
-/*   Updated: 2024/10/31 17:23:39 by juanherr         ###   ########.fr       */
+/*   Created: 2024/11/01 15:46:04 by aloiki            #+#    #+#             */
+/*   Updated: 2024/11/01 15:48:39 by aloiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//static void	print_list(t_list **stack_a)
-//{
-//	t_list	*current;
-
-//	current = *stack_a;
-//	while (current != NULL)
-//	{
-//		ft_putstr_fd(current->content, 1);
-//		ft_putstr_fd(" > index > ", 1);
-//		ft_putnbr_fd(current->index, 1);
-//		ft_putstr_fd("\n", 1);
-//		current = current->next;
-//	}
-//	ft_putstr_fd("\n", 1);
-//}
 
 int	main(int argc, char *argv[])
 {
