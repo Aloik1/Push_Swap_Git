@@ -29,7 +29,6 @@ int	main(int argc, char *argv[])
 	array = stack_to_array(stack_a, size);
 	ft_bubblesort(array, size);
 	assign_index(&stack_a, array, size);
-//	print_list(&stack_a);
 	ft_sort(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
